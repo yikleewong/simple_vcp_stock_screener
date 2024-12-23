@@ -162,7 +162,11 @@ def screen_stock():
 
     return screened_stock
 
-screened_stock = screen_stock()
-df = pd.DataFrame(screened_stock, columns=['Symbols', 'Price', 'IsUptrend', 'AboveMA', 'Yearly_Profit_20%', 'Quarterly_Profit_Growth', 'Revenue_Growth', 'EPS_Growth', 'Symptoms_Count'])
-df.to_csv('screened_stock_v1.csv', encoding='utf-8', index=False)
-print("generated file for analysis")
+def main():
+    screened_stock = screen_stock()
+    df = pd.DataFrame(screened_stock, columns=['Symbols', 'Price', 'IsUptrend', 'AboveMA', 'Yearly_Profit_20%', 'Quarterly_Profit_Growth', 'Revenue_Growth', 'EPS_Growth', 'Symptoms_Count'])
+    df.to_csv('screened_stock_v1.csv', encoding='utf-8', index=False)
+    print("generated file for analysis")
+
+if __namne__ == '__main__':
+    main()
