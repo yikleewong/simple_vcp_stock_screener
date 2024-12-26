@@ -1,11 +1,34 @@
-This is a simple stock screener to filter out stocks in following requirements:
-1) is uptrend in last 3 months
-2) latest price above ma_150 and ma_200
-3) yearly and quarterly gross profit growth exceed 20% in last two to three years or quarters
-4) yearly revenue growth exceeds 20%
-5) quarterly eps growth exceeds 20%
+There are two main functions for screening the stocks in NYSE : analysis.py and vcp_screener_stock.py
+# VCP_Stock_Screener
 
-Unlike standard screener in the market, program only counts the TRUE value, but not screen stock fulfilled all requirements.
-Data is fetched from yahoo finance and export as csv file for not always requesting from server
+## Analysis.py
+### Data Crawling 
+-Get tickers from 'NYSE' label using yfinance library (an open-sourced tool) and save it 
+-fetch history price data and financial fundamental data, such as yearly or quarterly revenue, eps, gross profit, of tickers
+*add time.sleep(1) to prevent numerous html requests to yahoo finance in short time
 
-For Personal Usage
+### Data Cleaning
+-Correct symbol names with different special character '^', '/', it should be '.' mostly
+-Remove symbols that are delisted from NYSE already
+
+### Data Analysis
+-Use linear Regression Model to calculate the slope of price movement last three months
+-Calculate the mean of history price as moving average as another proof of uptrending
+-Calculate the percentage change of revenue, gross profit and eps growth yearly or quarterly as simple fundamental analysis
+-Count the number of True value returned as multi-layers to screen stocks instead of filtering under various conditions
+
+## vcp_stock_screener.py
+### Data processing
+-Use the outputed .csv from analysis.py and filter out unavaliable symbols with count = 0 and 1
+
+### Data analysis
+-Apply the nine vcp condintions defined by Mark Minervini
+-show stock price graph from fivizfinance 
+-Apply backtest to see the price change within 200days whenever the vcp screener = True
+-Calculate the mean of percentages price changesd within 200days among all stocks that met requirements
+-Plot graph 
+
+## Conclusion
+The percentage change is higher when the longer you own
+
+
