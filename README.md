@@ -27,8 +27,12 @@ There are two main functions for screening the stocks in NYSE : analysis.py and 
 -Apply backtest to see the price change within 200days whenever the vcp screener = True
 -Calculate the mean of percentages price changesd within 200days among all stocks that met requirements
 -Plot graph 
+![holdingDays](https://github.com/user-attachments/assets/cf98f89c-b33f-4486-b4fe-2e39c5dad748)
+X-axis represents the period you hold the stock whenever vcp signal is True
+Y-axis represents the mean percentage changed 
 
 ## Conclusion
-The percentage change is higher when the longer you own
+This figure shows a uptrend through the time period, the longer you hold a stock.
+VCP signal applys to most of the stocks, however, the signal appears too often making the pct change is mainly in range of 0-0.5%
 
 
